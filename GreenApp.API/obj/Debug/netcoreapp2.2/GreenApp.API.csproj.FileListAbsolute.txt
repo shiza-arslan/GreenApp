@@ -1,0 +1,14 @@
+C:\Users\Shiza\GreenApp\GreenApp.API\bin\Debug\netcoreapp2.2\GreenApp.API.deps.json
+C:\Users\Shiza\GreenApp\GreenApp.API\bin\Debug\netcoreapp2.2\GreenApp.API.runtimeconfig.json
+C:\Users\Shiza\GreenApp\GreenApp.API\bin\Debug\netcoreapp2.2\GreenApp.API.runtimeconfig.dev.json
+C:\Users\Shiza\GreenApp\GreenApp.API\bin\Debug\netcoreapp2.2\GreenApp.API.dll
+C:\Users\Shiza\GreenApp\GreenApp.API\bin\Debug\netcoreapp2.2\GreenApp.API.pdb
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.csprojAssemblyReference.cache
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.csproj.CoreCompileInputs.cache
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.RazorAssemblyInfo.cache
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.RazorAssemblyInfo.cs
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.AssemblyInfoInputs.cache
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.AssemblyInfo.cs
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.RazorTargetAssemblyInfo.cache
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.dll
+C:\Users\Shiza\GreenApp\GreenApp.API\obj\Debug\netcoreapp2.2\GreenApp.API.pdb
