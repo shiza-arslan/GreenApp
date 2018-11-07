@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "iisSettings": {
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
@@ -19,9 +19,9 @@
     },
     "GreenApp.API": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser":false,
       "launchUrl": "api/values",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:5000dot",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
