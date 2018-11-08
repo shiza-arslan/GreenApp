@@ -27,25 +27,8 @@ namespace GreenApp.API.Controllers
             _repo = repo;
 
         }
-        // [HttpPost("register")]
-        // public async Task<IActionResult> register([FromBody]CompanyForRegisterDto companyForRegisterDto)
-        // {
-        //     if (await _repo.CompanyExist(companyForRegisterDto.Email))
-        //         return BadRequest("company already exist");
-        //     var companytocreate = new RegisterCompany
-        //     {
-        //         //  Logo=companyForRegisterDto.Logo,
-        //         Name = companyForRegisterDto.Name,
-        //         Address = companyForRegisterDto.Address,
-        //         City = companyForRegisterDto.City,
-        //         Email = companyForRegisterDto.Email,
-
-        //     };
-        //     var companyCreated = await _repo.Register(companytocreate, companyForRegisterDto.Password);
-        //     return StatusCode(201);
-        // }
-        [HttpPost("login")]
-        public async Task<IActionResult> login([FromBody]CompanyForRegisterDto companyForRegisterDto)
+        [HttpPost("register")]
+        public async Task<IActionResult> register([FromBody]CompanyForRegisterDto companyForRegisterDto)
         {
             if (await _repo.CompanyExist(companyForRegisterDto.Email))
                 return BadRequest("company already exist");
@@ -61,35 +44,35 @@ namespace GreenApp.API.Controllers
             var companyCreated = await _repo.Register(companytocreate, companyForRegisterDto.Password);
             return StatusCode(201);
         }
+        
+       [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody]CompanyForLoginDtos companyForLoginDtos)
+        {
+            var CompanyFromRepo = await _repo.Login(companyForLoginDtos.Email, companyForLoginDtos.Password);
+            if (CompanyFromRepo == null)
+                return Unauthorized();
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier,CompanyFromRepo.id.ToString()),
+                new Claim(ClaimTypes.Email,CompanyFromRepo.Email)
 
-    //    [HttpPost("login")]
-    //     public async Task<IActionResult> Login([FromBody]CompanyForLoginDtos companyForLoginDtos)
-    //     {
-    //         var CompanyFromRepo = await _repo.Login(companyForLoginDtos.Email, companyForLoginDtos.Password);
-    //         if (CompanyFromRepo == null)
-    //             return Unauthorized();
-    //         var claims = new[]
-    //         {
-    //             new Claim(ClaimTypes.NameIdentifier,CompanyFromRepo.id.ToString()),
-    //             new Claim(ClaimTypes.Email,CompanyFromRepo.Email)
 
+            };
+            var Key = new SymmetricSecurityKey( Encoding.UTF8
+            .GetBytes(_config.GetSection("AppSettings:Token").Value));
+            var creds= new SigningCredentials(Key, SecurityAlgorithms.HmacSha512Signature);
+            var TokenDescription= new SecurityTokenDescriptor
+            {
+                Subject= new ClaimsIdentity(claims),
+                Expires=DateTime.Now.AddDays(1),
+                SigningCredentials=creds
+            };
+            var TokenHandler=new JwtSecurityTokenHandler();
+             var token= TokenHandler.CreateToken(TokenDescription);
+             return Ok(new {
+                 token= TokenHandler.WriteToken(token)
+             });
 
-    //         };
-    //         var Key = new SymmetricSecurityKey(Encoding.UTF8
-    //         .GetBytes(_config.GetSection("AppSettings:Token").Value));
-    //         var creds= new SigningCredentials(Key, SecurityAlgorithms.HmacSha512Signature);
-    //         var TokenDescription= new SecurityTokenDescriptor
-    //         {
-    //             Subject= new ClaimsIdentity(claims),
-    //             Expires=DateTime.Now.AddDays(1),
-    //             SigningCredentials=creds
-    //         };
-    //         var TokenHandler=new JwtSecurityTokenHandler();
-    //          var token= TokenHandler.CreateToken(TokenDescription);
-    //          return Ok(new {
-    //              token= TokenHandler.WriteToken(token)
-    //          });
-
-    //     }
+        }
     }
 }
