@@ -8,5 +8,6 @@ namespace GreenApp.API.Data
           Task<RegisterCompany> Register(RegisterCompany company,string password);
          Task<RegisterCompany> Login(string email,string password);
          Task<bool> CompanyExist(string email);
+       
     }
 }

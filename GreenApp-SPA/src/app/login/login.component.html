@@ -1,0 +1,33 @@
+<h1 style="text-align: center">Login</h1>
+<div class="container">
+  <form class="well box">
+    <div class="row">
+        <div class="form-group">
+            <label for="Email">
+              Email:
+            </label>
+             <input type="text"id="Email" required ngModel name="Email" #Email="ngModel" (change)= "log()" class="form-control">
+             <div class="alert alert-danger" *ngIf="!Email.valid"><h1>Email is required</h1></div>
+          
+         </div>
+         <div class="form-group">
+           <label for="Password">
+             Password:
+            </label>
+             <input type="password" id="Password" required ngModule name="Password" class="form-control">
+           
+           </div> 
+           <br>
+           <div style="margin-left: 30%">
+              <button type="button" class="btn btn-success">Login</button>
+          
+           </div>
+             
+          
+               
+           
+    </div>
+    
+       </form>
+  
+</div>

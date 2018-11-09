@@ -48,7 +48,8 @@ namespace GreenApp.API.Controllers
        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]CompanyForLoginDtos companyForLoginDtos)
         {
-            var CompanyFromRepo = await _repo.Login(companyForLoginDtos.Email, companyForLoginDtos.Password);
+            try{
+                 var CompanyFromRepo = await _repo.Login(companyForLoginDtos.Email, companyForLoginDtos.Password);
             if (CompanyFromRepo == null)
                 return Unauthorized();
             var claims = new[]
@@ -72,6 +73,12 @@ namespace GreenApp.API.Controllers
              return Ok(new {
                  token= TokenHandler.WriteToken(token)
              });
+            }
+            catch
+            {
+             return StatusCode(500,"Computer says no!");
+            }
+           
 
         }
     }
