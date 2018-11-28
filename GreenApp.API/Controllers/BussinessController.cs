@@ -29,5 +29,29 @@ namespace GreenApp.API.Controllers
           }
           
         }
+        // [Produces("application/json")]
+        [HttpGet("FindBussinessById")]
+        public async Task<IActionResult> FindBussinessById(int id)
+        {
+            try{
+              var bussiness=await _bussiness.GetBussinessById(id);
+                return Ok(bussiness);
+            }
+            catch{
+             return BadRequest();
+            }
+         
+        }
+          [HttpGet("GetBussinesses")]
+        public async Task<IActionResult > GetBussinesses()
+        {
+            try{
+              var bussiness=await _bussiness.GetAll();
+                return Ok(bussiness);
+            }
+            catch{
+             return BadRequest();
+            }  
     }
+}
 }

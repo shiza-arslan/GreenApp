@@ -38,6 +38,7 @@ namespace GreenApp.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
             services.AddScoped<IAuthRepository,AuthRepository>();
+             services.AddScoped<IMessageRepository,MessageRepository>();
             services.AddScoped<IBussinessRepository,BussinessRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(Options=>{
                 Options.TokenValidationParameters=new TokenValidationParameters
@@ -75,10 +76,11 @@ namespace GreenApp.API
               //  app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
           app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
           app.UseAuthentication();
             app.UseMvc();
         }
     }
+    
 }

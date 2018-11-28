@@ -12,6 +12,6 @@ namespace GreenApp.API.Models
     public string Email { get; set; }
     public byte[] PasswordHash { get; set; }
      public byte[] PasswordSalt { get; set; }
-     public IList<Bussiness> Bussinesses{get;set;}
+    //  public ICollection<Bussiness> Bussinesses{get;set;}
     }
 }

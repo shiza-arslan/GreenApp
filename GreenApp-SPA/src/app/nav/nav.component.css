@@ -91,3 +91,9 @@ nav ul li a{
     color: #fff !important;
     padding-left: 20px;
 }
+.navbar {
+    margin-bottom: 0;
+}
+.dropdown{
+    padding-top: 15px;
+}

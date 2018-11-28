@@ -27,10 +27,36 @@
       </div>
       <ul class="nav navbar-nav">
         <li class="active"><a [routerLink]="['/Home']">Home</a></li>
+        <!-- <li><a (click)=(logOut())>logout</a></li> -->
       </ul>
+      <!-- <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div> -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a [routerLink]="['/AddBussiness']" ><span class="glyphicon glyphicon-user"></span> Add Bussiness</a></li>
-        <li><a [routerLink]="['/Login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         
+           
+           
+        <li><a [routerLink]="['/Company']"><span class="glyphicon glyphicon-user"></span> Add Bussiness</a></li>
+        <li><a [routerLink]="['/Admin']"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+        <li>
+            <div *ngIf=" loggedIn()"  class="dropdown">
+           <a class="dropdown-toggle text-light" data-toggle="dropdown">
+             Welcome      {{companyService.decodedToken?.email}}              </a>
+           
+             <div class="dropdown-menu" style="color: black ; background-color: black">
+               <a class="dropdown-item" (click)=(logOut()) >logout</a>
+             </div>
+           </div>
+
+        </li> 
+        <li><a *ngIf="!loggedIn()" [routerLink]="['/Login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </nav>

@@ -1,0 +1,28 @@
+div table{
+    padding-left: 5%;
+    padding-right:5%;
+      width: 60%;
+      height: auto;
+      /* padding-top: 5%; */
+      margin-left:20%;
+      margin-top:5%;
+      border-radius: 30px;
+      
+  }
+  div h1{
+    text-align: center;
+  }
+ div .box{
+      width: 60%;
+      height: auto;
+      /* padding-top: 5%; */
+      margin-left:20%;
+      margin-top:5%;
+      margin-bottom: 5%;
+      border-radius: 30px;
+   
+      
+  }
+ div button{
+     margin-left: 40%;
+ }

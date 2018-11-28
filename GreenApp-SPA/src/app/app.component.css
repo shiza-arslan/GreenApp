@@ -2,7 +2,7 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 10%;
+    height: auto;
     width: 100%;
     background-color:#4e700b;
     color: white;

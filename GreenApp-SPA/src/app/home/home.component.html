@@ -1,3 +1,62 @@
+
+<div class="img-fluid responsive img">
+  
+    <input type="text" placeholder="Search by name.." [(ngModel)]="findData" id="input1"><span>
+        <input type="text" placeholder="Search by phoneNumber.." [(ngModel)]="findPhoneNumber" id="input2">
+        <button type="button" class="btn btn-info"  >Search</button>
+        <!-- <button type="button" class="btn btn-info" (click)="onclick(id)"  >Id</button>
+        <button type="button" class="btn btn-info" (click)="onclick(name)"  >Name</button>
+        <button type="button" class="btn btn-info" (click)="onclick(companyid)"  >CompanyId</button> -->
+      </span>
+<table border=1 *ngIf="findData || findPhoneNumber"  class="table">
+  <thead>
+    <tr>
+        
+    </tr>
+    <tr>
+      
+      <th style="width:60px;max-width:100px;">Name</th>
+      <th style="width:60px;max-width:50px;">PhoneNumber</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let b of updatebusiness| filterdata: queryString : 'parameter'; let i = index "> -->
+      <tr *ngFor="let businessDatabase of updatebusiness | filterdata: findData : 'name'  | filterdata: findPhoneNumber : 'phonenumber' " (click) = "onSelect(businessDatabase.id)" >
+      <!-- <td>{{i+1}}</td> -->
+     
+      <td>{{businessDatabase.name}}</td>
+      <td>{{businessDatabase.phonenumber}}</td>
+      
+    </tr>
+   
+  </tbody>
+</table>
+<hr>
+
+<div *ngIf="bussiness " class="well">
+  <h1>
+    Bussiness Detail
+  </h1>
+  <p>
+  Name:  {{bussiness.name}}
+    <br>
+  PhoneNumber: {{bussiness.phonenumber}}
+  </p>
+    <br>
+    <h2> Company detail</h2>
 <p>
-<img src="http://laoblogger.com/images/green-color-background-clipart-2.jpg" class="responsive">
+Name:  {{bussiness.company.name}}
+  <br>
+Address: {{bussiness.company.address}}
+  <br>
+ Email: {{bussiness.company.email}}
+  <br>
+City: {{bussiness.company.city}}
+   <br>
+
 </p>
+ 
+</div>
+
+</div>

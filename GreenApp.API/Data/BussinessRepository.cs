@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using GreenApp.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -25,5 +26,20 @@ namespace GreenApp.API.Data
            return true;
            return false;
         }
+
+        public async Task<IEnumerable<Bussiness>> GetAll()
+        {
+            var bussiness= new Bussiness();
+       return await _context.bussinesses.ToListAsync();
+        
+         
+        }
+
+        public async Task<Bussiness> GetBussinessById(int id)
+        {
+           return await _context.bussinesses.Include(x=>x.Company).SingleOrDefaultAsync(x=>x.id==id);
+           
+            // console.log('Response through Async function',);       
+             }
     }
 }

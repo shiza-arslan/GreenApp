@@ -9,13 +9,24 @@ import {PageNotFoundComponentComponent} from './page-not-found-component/page-no
 import { from } from 'rxjs';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { CompanyComponent } from './company/company.component';
+import { HttpClientModule } from '@angular/common/http';
+import {CompanyService} from './Services/CompanyService/Company.service';
+import { ErrorIncepterProvider } from './Services/error.interceptor';
+import { FilterdataPipe } from './filterdata.pipe';
+import { AdminComponent } from './admin/admin.component';
+import { MessageComponent } from './message/message.component';
 
 
 
 const appRoutes: Routes = [
-    { path: 'AddBussiness', component: AddBussinessComponent  },
+    { path: 'AddBussiness', component: AddBussinessComponent},
     { path: 'Login', component: LoginComponent },
-    {path: 'Home', component: HomeComponent}
+    {path: 'Home', component: HomeComponent},
+    {path: 'Company', component: CompanyComponent},
+    {path:'Admin',component:AdminComponent},
+    {path:'Message',component:MessageComponent},
+    { path: '',   redirectTo: '/Home', pathMatch: 'full' }
   ];
 @NgModule({
    declarations: [
@@ -25,16 +36,24 @@ const appRoutes: Routes = [
       LoginComponent,
       PageNotFoundComponentComponent,
       HomeComponent,
+      CompanyComponent,
+      FilterdataPipe,
+      AdminComponent,
+      MessageComponent,
    ],
    imports: [
       BrowserModule,
       FormsModule,
+       HttpClientModule,
       RouterModule.forRoot(
         appRoutes,
         { enableTracing: true } // <-- debugging purposes only
       )
    ],
-   providers: [],
+   providers: [
+     CompanyService,
+     ErrorIncepterProvider
+   ],
    bootstrap: [
       AppComponent
    ]

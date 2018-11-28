@@ -34,7 +34,7 @@ namespace GreenApp.API.Controllers
                 return BadRequest("company already exist");
             var companytocreate = new RegisterCompany
             {
-                //  Logo=companyForRegisterDto.Logo,
+              // Logo=companyForRegisterDto.Logo,
                 Name = companyForRegisterDto.Name,
                 Address = companyForRegisterDto.Address,
                 City = companyForRegisterDto.City,
@@ -46,9 +46,9 @@ namespace GreenApp.API.Controllers
         }
         
        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody]CompanyForLoginDtos companyForLoginDtos)
+        public async Task<IActionResult> login([FromBody]CompanyForLoginDtos companyForLoginDtos)
         {
-            try{
+    
                  var CompanyFromRepo = await _repo.Login(companyForLoginDtos.Email, companyForLoginDtos.Password);
             if (CompanyFromRepo == null)
                 return Unauthorized();
@@ -74,12 +74,9 @@ namespace GreenApp.API.Controllers
                  token= TokenHandler.WriteToken(token)
              });
             }
-            catch
-            {
-             return StatusCode(500,"Computer says no!");
-            }
+           
            
 
-        }
+        
     }
 }

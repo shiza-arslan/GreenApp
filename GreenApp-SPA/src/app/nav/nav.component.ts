@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertifyService } from '../Services/alertify.service';
+import { CompanyService} from '../Services/CompanyService/Company.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -7,8 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public companyService: CompanyService, private router:Router,private alertify:AlertifyService) { }
+ 
+  logOut() {
+    localStorage.removeItem('token');
+    this.alertify.message('logged out');
+    this.router.navigate(['/Home']);
+  }
+  loggedIn() {
+    return this.companyService.loggedIn();
+  }
   ngOnInit() {
   }
 

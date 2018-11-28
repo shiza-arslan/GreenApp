@@ -1,25 +1,30 @@
 <h1 style="text-align: center">Login</h1>
 <div class="container">
-  <form class="well box">
+  <form class="well box" #loginform="ngForm" (ngSubmit)="login()">
     <div class="row">
         <div class="form-group">
             <label for="Email">
               Email:
             </label>
-             <input type="text"id="Email" required ngModel name="Email" #Email="ngModel" (change)= "log()" class="form-control">
-             <div class="alert alert-danger" *ngIf="!Email.valid"><h1>Email is required</h1></div>
+             <input type="text"id="Email" required [(ngModel)]="model.Email" #Email="ngModel" name="Email" class="form-control">
+             <div class="alert alert-danger" *ngIf="Email.touched && !Email.valid"><h3>Email is required</h3></div>
           
          </div>
          <div class="form-group">
            <label for="Password">
              Password:
             </label>
-             <input type="password" id="Password" required ngModule name="Password" class="form-control">
+             <input type="password" id="Password" required [(ngModel)]="model.Password" #Password="ngModel" name="Password" class="form-control">
+             <div class="alert alert-danger" *ngIf="Password.touched && !Password.valid"><h3>Email is required</h3></div>
            
            </div> 
            <br>
-           <div style="margin-left: 30%">
-              <button type="button" class="btn btn-success">Login</button>
+           <div>
+              <button class="btn btn-success"   style="margin-left: 35%" type="submit">Login</button>
+              <span>
+                <button type="button" class="btn btn-success" [routerLink]="['/Company']" style="margin-left: 5%">Signup</button>
+
+              </span>
           
            </div>
              
@@ -29,5 +34,15 @@
     </div>
     
        </form>
+  <!-- <pre>
+    Form Valid:{{loginform.valid}}
+    Form Touched:{{loginform.touched}}
+  Form dirty:{{loginform.dirty}}
+  Form Values:{{loginform.value | json}}
+  Email Valid:{{loginform.valid}}
+    Email Touched:{{loginform.touched}}
+    Email dirty:{{loginform.dirty}}
+    Email Values:{{Email.value}
+  </pre>      -->
   
 </div>
